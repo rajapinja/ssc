@@ -1,0 +1,319 @@
+CREATE TABLE `sscdb`.`registration` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL,
+    `phone` varchar(255) NOT NULL,
+    `email` varchar(255), 
+    `service` varchar(255) NOT NULL,
+    `service_date` date NOT NULL,
+    `created_date` timestamp NOT NULL,
+    `town` varchar(255),
+    `count` int NOT NULL,
+    PRIMARY KEY (`id`)
+  );
+  
+  CREATE TABLE `sscdb`.`skilledworker` (
+    `worker_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(255) NOT NULL,
+    `phone_number` varchar(255) NOT NULL,
+    `email` varchar(255), 
+    `service` varchar(255) NOT NULL,  
+    `created_date` timestamp NOT NULL,
+    `town` varchar(255),
+    `address` varchar(255)
+  );
+  
+  CREATE TABLE sscdb.Service (
+      service_id INT AUTO_INCREMENT PRIMARY KEY,
+      service_name VARCHAR(255),
+      description TEXT,
+      price DECIMAL(10, 2)   
+  );
+  
+  CREATE TABLE sscdb.WorkerService (
+      worker_id INT,
+      service_id INT,
+      PRIMARY KEY (worker_id, service_id),
+      FOREIGN KEY (worker_id) REFERENCES SkilledWorker(worker_id),
+      FOREIGN KEY (service_id) REFERENCES Service(service_id)
+  );
+  
+  CREATE TABLE sscdb.Task (
+      task_id INT AUTO_INCREMENT PRIMARY KEY,
+      task_name VARCHAR(255),
+      description TEXT,
+      deadline DATE,
+      status ENUM('pending_assignment', 'assigned', 'work_inprogress', 'work_pending', 'work_completed', 'payment_pending', 'payment_received', 'paid_to_worker', 'task_completed')
+    );
+  
+  CREATE TABLE sscdb.TaskAssignment (
+      assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+      task_id INT,
+      worker_id INT,
+      assignment_date DATETIME,
+      completion_date DATETIME,
+      status ENUM('assigned', 'work_inprogress', 'work_pending', 'work_completed', 'payment_pending', 'payment_received', 'paid_to_worker', 'task_completed'),
+      FOREIGN KEY (task_id) REFERENCES Task(task_id),
+      FOREIGN KEY (worker_id) REFERENCES SkilledWorker(worker_id)
+  );
+
+  CREATE TABLE sscdb.TaskWorkflow (
+    workflow_id INT AUTO_INCREMENT PRIMARY KEY,
+    task_id INT,
+    status ENUM('pending_assignment', 'assigned', 'work_inprogress', 'work_pending', 'work_completed', 'payment_pending', 'payment_received', 'paid_to_worker', 'task_completed', 'assignment_closed'),
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    notes TEXT,
+    FOREIGN KEY (task_id) REFERENCES Task(task_id)
+);
+
+ALTER TABLE sscdb.taskassignment
+ADD service_desc VARCHAR(255), 
+ADD start_time TIMESTAMP, 
+ADD end_time TIMESTAMP
+
+
+CREATE TABLE sscdb.task_status (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    status ENUM('assigned', 'work_inprogress', 'work_pending', 'work_completed', 'payment_pending', 'payment_received', 'paid_to_worker', 'task_completed') DEFAULT NULL
+);
+
+INSERT INTO sscdb.task_status (status)
+VALUES
+    ('assigned'),
+    ('work_inprogress'),
+    ('work_pending'),
+    ('work_completed'),
+    ('payment_pending'),
+    ('payment_received'),
+    ('paid_to_worker'),
+    ('task_completed');
+
+    CREATE TABLE `skilledworker` (
+  `worker_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `service` varchar(255) NOT NULL,
+  `created_date` timestamp NOT NULL,
+  `town` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`worker_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO sscdb.skilledworker (name, phone_number, email, service, created_date, town, address) VALUES
+('John Doe', '1234567890', 'john@example.com', 'Plumber', NOW(), 'City', '123 Main Street'),
+('Jane Smith', '9876543210', 'jane@example.com', 'Electrician', NOW(), 'Town', '456 Elm Street'),
+('Michael Johnson', '5551234567', 'michael@example.com', 'Brick Worker', NOW(), 'Village', '789 Oak Street'),
+('Emily Williams', '7778889999', 'emily@example.com', 'Construction Worker', NOW(), 'City', '321 Pine Street'),
+('Robert Brown', '4445556666', 'robert@example.com', 'Welder', NOW(), 'Town', '654 Maple Street'),
+('Jessica Taylor', '2223334444', 'jessica@example.com', 'Deliveryman', NOW(), 'Village', '987 Cedar Street'),
+('David Martinez', '9990001111', 'david@example.com', 'Cleaner', NOW(), 'City', '741 Birch Street'),
+('Amanda Wilson', '6667778888', 'amanda@example.com', 'Mason', NOW(), 'Town', '852 Fir Street'),
+('Christopher Anderson', '1112223333', 'christopher@example.com', 'Driver', NOW(), 'Village', '369 Walnut Street');
+INSERT INTO sscdb.skilledworker (worker_id, name, phone_number, service, created_date, town, address)
+VALUES (10, 'John Player', '+1234567890', 'Carpentry', NOW(), 'Town A', 'Address A');
+
+INSERT INTO sscdb.skilledworker (worker_id, name, phone_number, service, created_date, town, address)
+VALUES (11, 'Jane Wick', '+9876543210', 'Home Repair', NOW(), 'Town B', 'Address B');
+
+INSERT INTO sscdb.skilledworker (worker_id, name, phone_number, service, created_date, town, address)
+VALUES (12, 'Bob Smith', '+1122334455', 'Painter', NOW(), 'Town C', 'Address C');
+
+UPDATE sscdb.taskassignment
+SET worker_id =1, assignment_date ='2024-03-18', service_desc='attain home services request by given date',
+	status='assigned', start_time='19:00:00', end_time='11:00:00', completion_date='2024-03-26'
+WHERE assignment_id=1;
+    
+    
+ALTER TABLE sscdb.taskassignment MODIFY COLUMN assignment_date date, MODIFY COLUMN completion_date date;
+
+ALTER TABLE sscdb.taskassignment AUTO_INCREMENT = 1;
+
+
+UPDATE sscdb.taskassignment
+SET worker_id =1, assignment_date ='2024-03-18', service_desc='attain home services request by given date',
+	status='assigned', start_time='19:00:00', end_time='11:00:00', completion_date='2024-03-26'
+WHERE assignment_id=1;
+    
+    
+ALTER TABLE sscdb.taskassignment MODIFY COLUMN assignment_date date, MODIFY COLUMN completion_date date;
+
+ALTER TABLE sscdb.taskassignment
+ADD task_name varchar(255)
+
+CREATE TABLE `registration` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `service` varchar(255) NOT NULL,
+  `service_date` date NOT NULL,
+  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `town` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `task` (
+  `task_id` int NOT NULL AUTO_INCREMENT,
+  `task_name` varchar(255) DEFAULT NULL,
+  `description` text,
+  `deadline` date DEFAULT NULL,
+  `status` enum('created','pending','assigned','work_inprogress','work_pending','work_completed','payment_pending','payment_received','paid_to_worker','closed','additional_status') DEFAULT NULL,
+  `registration_id` int NOT NULL,
+  PRIMARY KEY (`task_id`),
+  KEY `fk_registration_id` (`registration_id`),
+  CONSTRAINT `fk_registration_id` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`)
+);
+
+CREATE TABLE `taskassignment` (
+  `assignment_id` int NOT NULL AUTO_INCREMENT,
+  `task_id` int DEFAULT NULL,
+  `worker_id` int DEFAULT NULL,
+  `assignment_date` date DEFAULT NULL,
+  `completion_date` date DEFAULT NULL,
+  `status` enum('assigned','work_inprogress','work_pending','work_completed','payment_pending','payment_received','paid_to_worker','task_completed') DEFAULT NULL,
+  `service_desc` varchar(255) DEFAULT NULL,
+  `start_time` time DEFAULT NULL,
+  `end_time` time DEFAULT NULL,
+  `task_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`assignment_id`),
+  KEY `task_id` (`task_id`),
+  KEY `worker_id` (`worker_id`),
+  CONSTRAINT `taskassignment_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`),
+  CONSTRAINT `taskassignment_ibfk_2` FOREIGN KEY (`worker_id`) REFERENCES `skilledworker` (`worker_id`)
+);
+
+
+SELECT r.name, r.phone, r.town, sw.name as workr_name, t.task_id, t.task_name, ta.status, 
+	   ta.assignment_id, r.created_date, ta.assignment_date, ta.completion_date
+FROM sscdb.registration r
+JOIN  sscdb.task t ON  r.id = t.registration_id
+JOIN  sscdb.taskassignment ta ON t.task_id = ta.task_id      
+JOIN   sscdb.skilledworker sw  ON ta.worker_id = sw.worker_id
+
+CREATE TABLE `service` (
+  `service_id` int NOT NULL AUTO_INCREMENT,
+  `service_name` varchar(255) DEFAULT NULL,
+  `description` text,
+  `price` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`service_id`)
+);
+
+INSERT INTO sscdb.service (service_name, description, price) VALUES
+('Home Repair', 'General home repair services', 500.00),
+('Plumbing Service', 'Installation and repair of plumbing fixtures', 600.00),
+('Electrical Service', 'Electrical wiring and fixture installation', 500.00),
+('Painting Service', 'Interior and exterior painting services', 600.00),
+('Carpentry Service', 'Carpentry and woodworking services', 650.00);
+('Cleaning Services', 'Home Cleaning and Sofa Cleaning services', 500.00),
+('Construction Workers', 'Construction workers available for bulding constructions and other related services', 500.00),
+('Brick Service', 'Red and Cement Brick services and Installation fixtures', 600.00),
+('Delivery Service', 'Delivery services and goods movement', 500.00),
+('Driver Service', 'Domestic Driveer Services', 600.00),
+('Mason', 'Building and Construction plastering Service', 650.00),
+('Welder Service', 'Welding and Patching services', 650.00);
+
+
+CREATE TABLE `workerservice` (
+  `worker_id` int NOT NULL,
+  `service_id` int NOT NULL,
+  PRIMARY KEY (`worker_id`,`service_id`),
+  KEY `service_id` (`service_id`),
+  CONSTRAINT `workerservice_ibfk_1` FOREIGN KEY (`worker_id`) REFERENCES `skilledworker` (`worker_id`),
+  CONSTRAINT `workerservice_ibfk_2` FOREIGN KEY (`service_id`) REFERENCES `service` (`service_id`)
+) ;    
+
+INSERT INTO sscdb.workerservice (worker_id, service_id) VALUES
+(1, 2), -- Worker 1 provides Home Repair service
+(2, 3), -- Worker 1 provides Plumbing Service
+(3, 8), -- Worker 2 provides Plumbing Service
+(4, 7), -- Worker 2 provides Electrical Service
+(5, 12), -- Worker 3 provides Painting Service
+(6, 9), -- Worker 4 provides Carpentry Service
+(7, 6),
+(8,11),
+(9,10), -- Worker 4 also provides Home Repair service
+(10,5),
+(11,1),
+(12,4);
+
+on sw.worker_id = ws.worker_id 
+
+select sw.name as Worker , sw.cart_count, ta.assignment_id, ta.task_id, ta.task_name
+FROm sscdb.skilledworker sw
+JOIN sscdb.taskassignment ta ON sw.worker_id = ta.worker_id;
+
+UPDATE sscdb.skilledworker sw, sscdb.taskassignment ta SET sw.cart_count = 1 
+WHERE sw.worker_id = ta.worker_id
+
+INSERT INTO sscdb.taskworkflow(task_id, status, timestamp, notes) values
+(1,'task_created',timestamp,'first task has been created'),
+(1,'pending_assignment',timestamp,'first task has been created, moved to pending'),
+(1,'assigned',timestamp,'first task has been created, moved to assigned'),
+(1,'work_inprogress',timestamp,'first task has been created, moved to work inprogress'),
+(1,'work_pending',timestamp,'first task has been created, moved to work pending');
+
+INSERT INTO sscdb.taskassignment(task_id,worker_id, assignment_date, status, service_desc, start_time, end_time,task_name,completion_date) VALUES
+(12,12,'2024-03-10','work_inprogress','Home Services needed at site 299','07:30:00','10:40:00','Home Serviceser','2024-03-14'),
+(14,6,'2024-03-13','work_inprogress','Sand Services needed at site 093','04:30:00','14:40:00','Sand Services','2024-03-15');
+
+SELECT * FROM sscdb.task;
+
+ALTER TABLE sscdb.`taskworkflow`
+MODIFY COLUMN `status` ENUM('task_created', 'pending_assignment', 'assigned', 'work_inprogress', 'work_pending', 'work_completed', 'payment_pending', 'payment_received', 'paid_to_worker', 'task_completed', 'assignment_closed') DEFAULT NULL;
+SELECT 
+    sw.worker_id,
+    sw.name AS worker_name,
+    sw.phone_number,
+    sw.email,
+    sw.service AS worker_service,
+    sw.created_date AS worker_created_date,
+    sw.town,
+    sw.address,
+    s.service_id,
+    s.service_name,
+    s.description AS service_description,
+    s.price,
+    ws.worker_id AS linked_worker_id,
+    ws.service_id AS linked_service_id
+FROM 
+    sscdb.skilledworker sw
+INNER JOIN 
+    sscdb.workerservice ws ON sw.worker_id = ws.worker_id
+INNER JOIN 
+    sscdb.service s ON ws.service_id = s.service_id;
+
+    SELECT * FROM sscdb.task_status;
+
+delete from sscdb.task_status;
+
+ALTER TABLE sscdb.task_status AUTO_INCREMENT = 1;
+
+INSERT INTO sscdb.task_status (status) VALUES
+('task_created'),
+('pending_assignment'),
+('assigned'),
+('work_inprogress'),
+('work_pending'),
+('work_completed'),
+('payment_pending'),
+('payment_received'),
+('paid_to_worker'),
+('task_completed'),
+('assignment_closed');
+
+
+ALTER TABLE sscdb.task_status
+MODIFY COLUMN status ENUM('task_created', 'pending_assignment', 'assigned', 'work_inprogress', 'work_pending', 'work_completed', 'payment_pending', 'payment_received', 'paid_to_worker', 'task_completed', 'assignment_closed') DEFAULT NULL;
+
+ALTER TABLE sscdb.taskassignment
+MODIFY column status ENUM('task_created','pending_assignment','assigned','work_inprogress','work_pending','work_completed','payment_pending','payment_received','paid_to_worker','task_completed','assignment_closed') DEFAULT NULL;
+
+CREATE TABLE sscdb.notifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    message VARCHAR(255) NOT NULL,
+    message_id VARCHAR(50) NOT NULL,
+    datetime DATETIME DEFAULT CURRENT_TIMESTAMP,
+    task_id INT NOT NULL,
+    status enum('task_created','pending_assignment','assigned','work_inprogress','work_pending','work_completed','payment_pending','payment_received','paid_to_worker','task_completed','assignment_closed') DEFAULT NULL,
+    FOREIGN KEY (task_id) REFERENCES sscdb.task(task_id) ON DELETE CASCADE
+);

@@ -1,0 +1,47 @@
+/* home.css */
+
+.section {
+    padding: 50px;
+    background-size: cover;
+    background-position: center;
+    color: rgb(18, 17, 17);
+  }
+  
+  .content {
+    max-width: 800px;
+    margin: 0 auto; /* Centering the content horizontally */
+    padding-left: 10px; /* Adding space on the left side */
+    margin-left: 100px;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the background image is behind other content */
+  }
+  
+  .welcome-text {
+    margin-bottom: 30px;
+  }
+  
+  .how-it-works,
+  .why-choose {
+    margin-bottom: 40px;
+  }
+  
+  .how-it-works ul,
+  .why-choose ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .how-it-works ul li,
+  .why-choose ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Additional styles can be added as needed */
+  

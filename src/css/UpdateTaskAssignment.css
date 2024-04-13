@@ -1,0 +1,8 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    width: 90%; /* Set container width relative to the form */
+  }

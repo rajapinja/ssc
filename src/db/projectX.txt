@@ -1,0 +1,89 @@
+SELECT * FROM projectx.district;
+
+-- Inserting fetched data into projectx.district
+INSERT INTO projectx.district (name, state, country)
+SELECT name, state, country FROM politico.district;
+
+CREATE TABLE projectx.customer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+	last_name VARCHAR(255),
+    age INT,   
+    DateOfBirth DATE,
+    project_name VARCHAR(255), 
+    address VARCHAR(255),
+    district VARCHAR(255),
+    state VARCHAR(255),
+    country VARCHAR(255),
+    identity_type VARCHAR(255)
+);
+
+ALTER TABLE projectx.customer
+ADD identity_type VARCHAR(255);
+
+CREATE TABLE projectx.identityproof (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+   identity_type VARCHAR(255)
+);
+
+insert into projectx.identityproof (identity_type) values('AADHAR');
+insert into projectx.identityproof (identity_type) values('PASSPORT');
+insert into projectx.identityproof (identity_type) values('VOTER ID');
+insert into projectx.identityproof (identity_type) values('DRIVING LICENSE');
+insert into projectx.identityproof (identity_type) values('EMPLOYEE ID');
+insert into projectx.identityproof (identity_type) values('PAN CARD');
+
+CREATE TABLE projectx.booking (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+	last_name VARCHAR(255),   
+    project_name VARCHAR(255),    
+    booking_date DATE,
+    plot_number INT,   
+    asset_type  VARCHAR(255),
+    down_payment_amount DECIMAL(15, 2),
+    payment_type  VARCHAR(255)
+);
+CREATE TABLE projectx.asset (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+	last_name VARCHAR(255),  
+    plot_number INT,   
+    project_name VARCHAR(255),
+    builder_name VARCHAR(255),
+    booking_date DATE,
+    assets_value DECIMAL(15, 2),  
+    asset_type VARCHAR(255)
+    );
+
+CREATE TABLE projectx.payment (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+	last_name VARCHAR(255),  
+	down_payment_amount DECIMAL(15, 2),  
+    payment_type VARCHAR(255),
+    payment_date DATE
+);
+
+CREATE TABLE projectx.project (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(255),
+    builder_name VARCHAR(255),	
+    launch_date DATE,
+    completion_date DATE,
+    possession_date DATE,
+    address VARCHAR(255),
+    district VARCHAR(255),
+    state VARCHAR(255),
+    country VARCHAR(255)
+);
+
+CREATE TABLE projectx.builder (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(255),
+    builder_name VARCHAR(255),    
+    address VARCHAR(255),
+    district VARCHAR(255),
+    state VARCHAR(255),
+    country VARCHAR(255)
+);

@@ -1,0 +1,39 @@
+/* Add this CSS to your stylesheets */
+
+.navbar {
+    background-color: #333; /* Set background color */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 50px; /* Set the height of the navigation bar */
+  }
+  
+  .navbar ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use flexbox for horizontal layout */
+  }
+  
+  .navbar ul li {
+    margin-right: 20px; /* Add some spacing between list items */
+  }
+  
+  .navbar ul li a {
+    color: #fff; /* Set text color */
+    text-decoration: none; /* Remove default underline */
+  }
+  
+  .navbar ul li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Boxed layout for inputs */
+  input {
+    height: 32px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 6px 10px; /* Adjust padding as needed */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Add rounded corners */
+  }
+  

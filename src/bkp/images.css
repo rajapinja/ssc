@@ -1,0 +1,91 @@
+.container {
+  margin: 20px auto;
+  max-width: 1060px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-color: maroon;
+  border-width: 4px;
+}
+
+.card {
+  border: 3px solid #ddd; /* Increased border thickness */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(4, 8, 193, 0.1);
+  width: calc(15% - 20px); /* Adjust card width based on 5 cards per row */ 
+  max-width: 200px; /* Set maximum width */
+  min-width: 140px; /* Set a minimum width for each card */
+  height: auto;
+  margin-bottom: 20px; /* Gap between rows */
+  margin-right: 10px; /* Gap between cards */
+  margin-left: 10px; /* Gap between cards */
+  transition: transform 0.3s ease;
+}
+
+.card:hover,
+.card:focus {
+  /* Apply desired styles when card is hovered or focused */
+  transform: scale(1.05); /* Increase size of the card */
+}
+
+.card-container {
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10px; /* Match the border-radius of the card */
+  border-top-right-radius: 10px; /* Match the border-radius of the card */
+}
+
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 11px;  
+}
+
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.search-bar-container {
+  background-color: #f0f0f0; /* Replace with your desired background color */
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 6px; /* Adjust the margin as needed */
+  width: 100%; /* Make the search bar container take up full width */
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.custom-datepicker {
+  height: 30px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: blueviolet;
+  /* Add other styles as needed */
+}
+
+.custom-calendar {
+  /* Define styles for the calendar here */
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #333;
+  z-index: 9999; /* Adjust z-index to ensure the calendar header is displayed above other elements */
+}

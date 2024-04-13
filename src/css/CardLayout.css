@@ -1,0 +1,39 @@
+.card-container {
+    display: flex; /* Use flexbox to arrange cards horizontally */
+    flex-wrap: wrap; /* Allow cards to wrap to the next row if needed */
+  }
+  
+  .card {
+    background-color: #ffffff; /* Default card background color */
+    border: 1px solid #e0e0e0; /* Card border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Spacing around card content */
+    margin: 10px; /* Margin between cards */
+    width: calc(20% - 20px); /* Set width for each card to occupy 25% of container width (minus margins) */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+  }
+  
+  .card:nth-child(4n+1),
+  .card:nth-child(4n+2) {
+    background-color: #f0f0f0; /* Alternate background color for odd-numbered rows */
+  }
+  
+.card-img-top {
+  max-width: 100%; /* Ensure images don't exceed the width of their container */
+  max-height: 100%; /* Ensure images don't exceed the height of their container */
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 11px;  
+}
+
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

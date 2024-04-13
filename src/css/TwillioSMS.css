@@ -1,0 +1,47 @@
+/* ScheduleCreationScreen.css */
+.form-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 50%;
+    margin: 50px auto; /* Center the form horizontally and add top margin */
+  }
+  
+  .form-container h2 {
+    text-align: center; /* Center the heading */
+  }
+  
+  .form-container label {
+    display: block; /* Make labels block-level elements */
+    margin-bottom: 10px;
+  }
+  
+  .form-container input,
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  

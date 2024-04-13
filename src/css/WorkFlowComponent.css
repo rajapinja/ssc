@@ -1,0 +1,35 @@
+/* WorkflowComponent.css */
+
+.workflow-container {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+  }
+  
+  .workflow-node {
+    width: 120px; /* Adjust node width as needed */
+    height: 50px; /* Adjust node height as needed */
+    background-color: #2196f3; /* Node background color */
+    color: white; /* Node text color */
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .workflow-node.selected {
+    background-color: #ff9800; /* Selected node background color */
+  }
+  
+  .workflow-node:hover {
+    cursor: pointer;
+  }
+  
+  .workflow-edge {
+    stroke: #bdbdbd; /* Edge color */
+    stroke-width: 2px; /* Edge width */
+  }
+  
+  .workflow-edge.selected {
+    stroke: #ff9800; /* Selected edge color */
+  }
+  

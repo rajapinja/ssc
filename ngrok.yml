@@ -1,0 +1,19 @@
+
+version: 2
+authtoken: 2aBNTTjaHRGBR99uelqdvTGeETC_3YczkCj3c6rawAM9eruM8
+
+tunnels:
+  # scorerecorder:
+  #   proto: http
+  #   addr: 5001
+  # regimatefrontend:
+  #   proto: http
+  #   addr:  19006
+  skillsquadbackend:
+    proto: http
+    addr:  5009
+  skillsquad:
+    proto: http
+    addr:  3000
+
+# ngrok start --config=ngrok.yml --all

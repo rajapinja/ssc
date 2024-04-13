@@ -1,0 +1,40 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    width: 80%; /* Set container width relative to the form */
+  }
+.assignment-form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 80px;
+}
+
+.assignment-table-container {
+    overflow-x: auto;
+}
+
+.assignment-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.assignment-table th, .assignment-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.assignment-table th {
+    background-color: #f0f0f0;
+}
+
+.assignment-table tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.assignment-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
