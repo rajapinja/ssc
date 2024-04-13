@@ -2,5 +2,5 @@ import axios from 'axios';
 
 export default axios.create({
   // withCredentials: true,
-  baseURL: 'http://localhost:3004',
+  baseURL: ' https://skillsquad-backend-app-4a40fef00f69.herokuapp.com',
 });
