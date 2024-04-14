@@ -4,5 +4,5 @@
 
 export const PROJECT_NAME = 'Training';
 
-export const BASE_URL = 'http://localhost:5009';
+export const BASE_URL = 'https://skillsquad-backend-app-4a40fef00f69.herokuapp.com';
 
